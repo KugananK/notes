@@ -1,0 +1,38 @@
+A way for enduser to input data to the database
+
+done through WT-Forms
+With CSRF protection
+    WTForms offers protection through 
+        <!-- form.hidden_tag() -->
+        on any html page which performs POST
+        <!-- SECRET_KEY -->
+        app.config["SECRET_KEY"] = "literally anystring"
+        best to hide ^ through a variable
+        app.confid["SECRET_KEY"] = os.getenv('SECRET_KEY')
+
+Forms: Uses FlaskForm class
+    Class FromName(FLaskForm):
+        name = Stringfield("Name")
+        submit = SubmitField("Submit") - will be in forms.py
+
+Different form fields 
+    StringField
+    IntegerField
+    BooleanField
+    DateField
+    DateTimefield
+    DecimalFireld
+    SubmitField
+    SelectField
+
+/home/Wario/flask-crud/flask-crud-ex
+<!-- <div class = 'form'>
+        <form method = 'POST', action = ''>
+            {{ form.hidden_tag() }}
+            {{ form.name.label}} {{ form.name}}
+             -->
+
+
+Field Attributes
+    
+

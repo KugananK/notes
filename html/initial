@@ -1,0 +1,24 @@
+Hypertext markup language
+
+
+tag structure
+<tag> this is the start tag
+    
+</tag> this is the end tag
+
+basic html file structure
+<!DOCTYPE html> this is supposed to be at the start to define what
+ type of document this is
+
+ <html>
+    <head>
+        <title> Page title </title>
+    </head>
+
+    <body>
+        All page content you want displayed should reside in the
+        body tag
+        <p> this is a paragraph tag </p>
+        
+    </body>
+ </html>

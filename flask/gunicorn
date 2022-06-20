@@ -1,0 +1,15 @@
+using pyhton 3 app.py is only good for testing and development
+
+for final build we need a:
+    Web Server Gateway Interface
+
+one we shall use is called
+Gunicorn
+
+it is installed via pip3
+
+to run an app with Gunicorn
+
+// gunicorn application:app
+
+gunicorn __bind=0.0.0.0:5000 --workers 5 application:app

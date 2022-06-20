@@ -1,0 +1,29 @@
+We want to make sure data passed through our form is formatted correctly
+
+flask has built in validators
+# DataRequired
+ex
+class MyForm(FlaskForm):
+    name = stringField('Name', validators=[DataRequired()])
+
+# Email
+class MyForm(FlaskForm):
+    email = StringField('Email', validators=[Email()])
+
+# Equals To
+class MyForm(FlaskForm):
+    password = PasswordField('Password', validators=[DataRequired(),EqualsTo('confirm_pw')])
+    confirm_pw=PasswordField('Confirm Pasword')
+
+# Length
+class MyForm(FlaskForm):
+    name = StringField('Name', validators=[length=(min=2,max=15)])
+
+# Custom Validators
+class MyForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    
+    def validate_uname(self, username):
+        if username.data.lower() == 'admin':
+            raise ValidationError("Invalid Username, please choose another")
+    

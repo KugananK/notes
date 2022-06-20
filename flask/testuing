@@ -1,0 +1,61 @@
+to make sure function is giving desired output
+
+Install flask_testing
+    pip3 install flask_testing
+
+import TestCase
+    from flask_testing import TestCase
+
+create TestBase class
+    class TestBase(TestCase):
+        def create_app() #defines flask config(test_db_uri)
+        def setUP() #will run before every test
+        def tearDown() #will run after every test
+
+To write tests:
+    class TestViews(TestBase):
+        def test_home_get(self):
+            response = self.client.get(url_for('home'))
+            self.assertEquals(response.status_code, 200)
+
+Assert 
+    assertEquals(a, b)          assertNotEquals(a,b)
+    assertTrue(x)               assertFalse(x)
+    assertIs(a, b)              assertIsNot(a, b)
+    assertIsNone(x)             assertIsNotNone(x)
+    assertIn(a, b)              assertNotIn(a, b)
+    assertIsInstance(a, b)      assertNotIsInstance(a, b)
+    assert200
+
+create_app() #remember to import app object
+    def create_app(self):
+        app.config.update(
+            SQLALCHEMY_DATABASE_URI = os.getenv('TEST_FB_URI'),
+            SECRET_KEY = os.getenv('TEST_SECRET_KEY')
+            DEBUG = True,
+            WTF_CSRF_PROTECTION = False
+        )
+        return app
+
+# ex
+setUp()
+    def setUp(self):
+        db.create_akk()
+        task = ToDo(name='Example', completed = False)
+        db.session.add(task)
+        db.session.commit()
+
+tearDown()
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+to run testsL
+make sure you are in directory containing both application and tests folder
+run python3 -m pytest
+or 
+python3 -m pytest --cov-report term-missing --cov= application tests/
+
+Making HTTP requests
+response = self.client.get(url_for('home'))
+response = self.client.post(url_for('add'), data=dict(name='New Task'), follows_redirects=True)
